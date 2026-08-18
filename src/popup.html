@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --ink: #14121C;
+        --ink-2: #1F1B2E;
+        --paper: #EDEBF2;
+        --muted: #8A83A3;
+        --signal: #F2A33C;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 288px;
+        padding: 20px;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+      }
+      .eyebrow {
+        font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+        text-transform: uppercase; color: var(--muted);
+      }
+      .clock {
+        margin-top: 10px;
+        font-size: 46px; font-weight: 600; line-height: 1;
+        letter-spacing: -0.03em; color: var(--signal);
+      }
+      .status { margin-top: 6px; color: var(--muted); font-size: 12px; }
+      hr { margin: 20px 0 16px; border: 0; border-top: 1px solid rgba(237, 235, 242, 0.1); }
+      label.row {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; padding: 7px 0; cursor: pointer;
+      }
+      input[type="number"] {
+        width: 62px; padding: 6px 8px; text-align: right;
+        background: var(--ink-2); color: var(--paper);
+        border: 1px solid rgba(237, 235, 242, 0.14); border-radius: 8px;
+        font-family: inherit; font-size: 13px;
+      }
+      input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--signal); cursor: pointer; }
+      button {
+        width: 100%; margin-top: 16px; padding: 11px;
+        background: transparent; color: var(--paper);
+        border: 1px solid rgba(237, 235, 242, 0.16); border-radius: 10px;
+        font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      }
+      button:hover { border-color: rgba(237, 235, 242, 0.34); }
+      :focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    </style>
+  </head>
+  <body>
+    <div class="eyebrow">Publica o cierra</div>
+    <div class="clock mono" id="clock">--:--</div>
+    <div class="status" id="status">Abre X para empezar</div>
+
+    <hr />
+
+    <label class="row">
+      <span>Minutos sin publicar</span>
+      <input type="number" id="limitMin" min="1" max="120" step="1" />
+    </label>
+    <label class="row">
+      <span>Los retuits cuentan</span>
+      <input type="checkbox" id="countRetweets" />
+    </label>
+    <label class="row">
+      <span>Notificación del sistema</span>
+      <input type="checkbox" id="notify" />
+    </label>
+    <label class="row">
+      <span>Extensión activa</span>
+      <input type="checkbox" id="enabled" />
+    </label>
+
+    <button id="reset">Reiniciar el reloj</button>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
